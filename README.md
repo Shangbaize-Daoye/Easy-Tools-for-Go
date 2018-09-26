@@ -1,2 +1,3 @@
-# Easy-Tools-for-Go
-Personal easy tools for Go, providing Pythonic functions written in Go.
+# Easy Tools for Go
+
+This is my personal easy tools for Go, providing Pythonic functions written in Go.

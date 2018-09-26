@@ -2,12 +2,12 @@ package io_handler
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"io"
 	"log"
 	"os"
 	"strconv"
+	"strings"
 )
 
 type File struct {
@@ -31,8 +31,7 @@ func Input(promptStrings ...string) (str string) {
 		log.Fatalln("<func Input(promptStrings ...string) (str string)> - \"reader.ReadString('\\n')\" failed in reading string from \"os.Stdin\":", err)
 	}
 
-	str = string(bytes.TrimRight([]byte(str), "\n"))
-	str = string(bytes.TrimRight([]byte(str), "\r"))
+	str = strings.TrimRight(str, "\r\n")
 
 	return
 }
