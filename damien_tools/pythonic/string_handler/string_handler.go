@@ -18,12 +18,7 @@ func Replace(s *string, old, new string, n int) {
 
 func Capitalize(s *string) {
 	if len(*s) != 0 {
-		s1 := (*s)[:1]
-		s2 := (*s)[1:]
-
-		Upper(&s1)
-		Lower(&s2)
-		*s = s1 + s2
+		*s = strings.ToUpper((*s)[:1]) + strings.ToLower((*s)[1:])
 	}
 }
 
