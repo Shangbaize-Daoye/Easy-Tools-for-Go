@@ -70,6 +70,25 @@ func SelectionListInput(selectionList []string, startFrom int) (str string) {
 	return
 }
 
+func CreateFile(fileName string, truncateExisting bool) {
+	var (
+		err    error
+		osFile *os.File
+	)
+
+	if truncateExisting {
+		if osFile, err = os.OpenFile(fileName, os.O_CREATE|os.O_TRUNC, 0); err != nil {
+			log.Fatalln("<func CreateFile(fileName string, overwriteExisting bool)> - Failed in creating file \"" + fileName + "\" when gave permission to truncate the existing file:", err)
+		}
+	} else {
+		if osFile, err = os.OpenFile(fileName, os.O_CREATE, 0); err != nil {
+			log.Fatalln("<func CreateFile(fileName string, overwriteExisting bool)> - Failed in creating file \"" + fileName + "\" when did not give permission to truncate the existing file:", err)
+		}
+	}
+
+	osFile.Close()
+}
+
 // Open only supports file mode "r", "w" and "a".
 func Open(fileName string, fileMode string) (file *File) {
 	switch fileMode {
