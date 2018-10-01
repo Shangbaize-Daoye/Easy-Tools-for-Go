@@ -49,13 +49,13 @@ func SelectionListInput(selectionList []string, startFrom int) (str string) {
 	}
 
 	endWith := startFrom
-    numberItemMap := make(map[int]string)
+	numberItemMap := make(map[int]string)
 
-    for _, item := range selectionList {
-        fmt.Println("[" + strconv.Itoa(endWith) + "]: " + item);
-        numberItemMap[endWith] = item;
-        endWith++;
-    }
+	for _, item := range selectionList {
+		fmt.Println("[" + strconv.Itoa(endWith) + "]: " + item);
+		numberItemMap[endWith] = item;
+		endWith++;
+	}
 
 	for selectionNumber, err = strconv.Atoi(Input("Please enter your number to choose: ")); selectionNumber < startFrom || selectionNumber >= endWith || err != nil; {
 		if err != nil {
@@ -65,7 +65,7 @@ func SelectionListInput(selectionList []string, startFrom int) (str string) {
 		selectionNumber, err = strconv.Atoi(Input("Invalid input! Please enter your number again: "))
 	}
 
-    str = numberItemMap[selectionNumber]
+	str = numberItemMap[selectionNumber]
 
 	return
 }
